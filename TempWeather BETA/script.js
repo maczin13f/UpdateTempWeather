@@ -20,6 +20,7 @@ const alertas = document.getElementById('alertasClimaticos');
 const nextdias = document.getElementById('previsaoDias');
 
 otherinfo.addEventListener('click', function(){
+    if (resu.style.display === 'block') {
     resu.style.display = 'none';
     resu3.style.display = 'none';
     resu1.style.display = 'block';
@@ -31,9 +32,21 @@ otherinfo.addEventListener('click', function(){
     divMapa.style.display = "block";
     paisinput.style.top = '-11.45em';
     paisinput.style.left = '49em';
+    }
+    else if (resu.style.display = 'none') {
+        resu.style.display = 'block';
+    resu3.style.display = 'block';
+    resu1.style.display = 'none';
+    resu2.style.display = 'none';
+    alertas.style.display = 'block';
+    nextdias.style.display = 'block';
+    divMapa.style.display = "none";
+    fechar.style.top = '-44.5em'
+    }
+
 })
 
-
+const botoespreview = document.getElementById('botoespreview')
 
 fechar.addEventListener('click', function(){
     resu.style.display = 'none';;
@@ -44,6 +57,9 @@ fechar.addEventListener('click', function(){
     alertas.style.display = 'none';
     nextdias.style.display = 'none';
     otherinfo.style.display = 'none';
+    botoespreview.style.display = 'block';
+    paisinput.style.top = '-8.86em';
+    fechar.style.display = 'none';
 })
 
 const verpreview1 = document.getElementById('preview1');
@@ -62,39 +78,61 @@ const preview5 = document.getElementById('previsaoDias5');
 verpreview1.addEventListener('click', function(){
     if (preview1.style.display === 'none') {
         preview1.style.display = 'block';
+        verpreview1.style.background = '#00ff00';
+        verpreview1.style.color = 'white';
     } else {
         preview1.style.display = 'none';
+        verpreview1.style.color = '';
+        verpreview1.style.background = '';
+
     }
 })
 
 verpreview2.addEventListener('click', function(){
     if (preview2.style.display === 'none') {
         preview2.style.display = 'block';
+        verpreview2.style.background = '#00ff00';
+        verpreview2.style.color = 'white';
     } else {
         preview2.style.display = 'none';
+        verpreview2.style.background = '';
+        verpreview2.style.color = '';
     }
 })
 
 verpreview3.addEventListener('click', function(){
     if (preview5.style.display === 'none') {
         preview5.style.display = 'block';
+        verpreview3.style.background = '#00ff00';
+        verpreview3.style.color = 'white';
     } else {
         preview5.style.display = 'none';
+        verpreview3.style.background = '';
+        verpreview3.style.color = '';
     }
 })
 
 verpreview4.addEventListener('click', function(){
     if (preview4.style.display === 'none') {
         preview4.style.display = 'block';
+        verpreview4.style.background = '#00ff00';
+        verpreview4.style.color = 'white';
     } else {
         preview4.style.display = 'none';
+        verpreview4.style.background = '';
+        verpreview4.style.color = '';
     }
 })
 
 verpreview5.addEventListener('click', function(){
     if (preview3.style.display === 'none') {
         preview3.style.display = 'block';
+        verpreview5.style.background = '#00ff00';
+        verpreview5.style.color = 'white';
     } else {
         preview3.style.display = 'none';
+        verpreview5.style.background = '';
+        verpreview5.style.color = '';
     }
 })
+

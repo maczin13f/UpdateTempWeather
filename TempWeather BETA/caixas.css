@@ -3,10 +3,10 @@
     position: relative;
     background: url(imagens/ceusol.jpg);
     background-size: cover;
-    background-position: center 35%;
-    top: -3em; 
+    background-position: center 35%; 
     width: 100%;
     border-radius: 20px;
+    top: -3em;
 }
 
 #resultado {
@@ -62,7 +62,7 @@
 .minima,
 .maxima {
     position: relative;
-    left: 48em;
+    left: 50em;
     width: 30%;
     top: -14em;
     font-size: 20px;
@@ -220,6 +220,7 @@
     border: solid black 3px;
     border-radius: 30px;
     top: 1em;
+    color: #00ff00;
 }
 
 .ar span {
@@ -229,7 +230,7 @@
 
 #alertasClimaticos {
     position: relative;
-    top: -23.5em;
+    top: -24em;
     border: solid black;
     border-radius: 20px;
     width: 90%;

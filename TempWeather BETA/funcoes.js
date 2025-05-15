@@ -135,7 +135,7 @@ function getCorTemperatura(temp) {
 
 function mostrarMapa(lat, lon, cidade) {
     const divMapa = document.getElementById("mapa");
-    divMapa.style.display = "none";
+    divMapa.style.display = "block";
 
     if (mapa) {
         mapa.setView([lat, lon], 10);

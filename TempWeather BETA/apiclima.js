@@ -98,7 +98,9 @@ async function buscarPrevisao() {
         const cidadeFormatada = formatarNomeCidade(cidade);
         const corTemperatura = getCorTemperatura(temperatura);
 
-        mostrarMapa(lat, lon, cidadeFormatada);
+otherinfo.addEventListener('click', function(){
+    mostrarMapa(lat, lon, cidadeFormatada);
+})
 
         document.getElementById("resultado").innerHTML = `
             <p class="cidade"> 🌍 <strong>${cidadeFormatada} ${estado ? ", " + estado : ""} - ${paisNome}</strong></p> 
@@ -155,6 +157,13 @@ async function buscarPrevisao() {
         saveSearch(cidade, estado, pais);
 
         const background = document.getElementById('background');
+
+        if (resu1.style.display === 'block') {
+            resu1.style.display = 'none';
+            resu2.style.display = 'none';
+            divMapa.style.display = 'none';
+            fechar.style.top = '-44.5em';
+        } 
          
 
         if (["⛈️ Trovoadas", "🌦️ Garoa", "🌧️ Chuva"].includes(condicaoTraduzidaComEmoji)) {
@@ -162,6 +171,7 @@ async function buscarPrevisao() {
             background.style.backgroundSize = "cover";
             background.style.backgroundPosition = 'left 8%';
             resu.style.color = 'white';
+            resu.style.textShadow = 'black 2px 3px 1px'
             resu1.style.background = 'url(imagens/thunderstorm.jpg)';
             resu1.style.backgroundSize = 'cover';
             resu1.style.backgroundPosition = 'center 38%';
@@ -298,6 +308,10 @@ async function buscarPrevisao() {
             const paisinput = document.getElementById('pais');
             paisinput.style.top = '-11.45em'
             paisinput.style.left = '49em';
+
+            const botoespreview = document.getElementById('botoespreview');
+
+            botoespreview.style.display = 'none';
 
         } catch (error) {
             console.error("Erro ao buscar alertas climáticos:", error);
