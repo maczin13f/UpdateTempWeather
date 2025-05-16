@@ -57,7 +57,7 @@ async function buscarPrevisao() {
         `).join("");
 
         document.getElementById("previsaoDias").innerHTML = `
-            <h5><span id="previsaoProximosDias">📆 Previsão dos próximos dias:</span></h5>
+            <h5>📆 Previsão dos próximos dias:</h5>
             <div id="dias">${diasHtml}</div>
         `;
         document.getElementById("previsaoDias").style.display = "";
@@ -157,6 +157,11 @@ otherinfo.addEventListener('click', function(){
         saveSearch(cidade, estado, pais);
 
         const background = document.getElementById('background');
+        const cidaderesu = document.querySelector('#resultado .cidade');
+        const cidaderesu2 = document.querySelector('#resultado2 .cidade');
+        const datadia = document.querySelector('#resultado3 .data');
+        const hora = document.querySelector('#resultado3 .hora');
+
 
         if (resu1.style.display === 'block') {
             resu1.style.display = 'none';
@@ -167,6 +172,10 @@ otherinfo.addEventListener('click', function(){
          
 
         if (["⛈️ Trovoadas", "🌦️ Garoa", "🌧️ Chuva"].includes(condicaoTraduzidaComEmoji)) {
+            cidaderesu.style.background = 'linear-gradient(to right, blue, black, white)';
+            cidaderesu2.style.background = 'linear-gradient(to right, blue, black, white)';
+            datadia.style.background = 'linear-gradient(to right, blue, black, white)';
+            hora.style.background = 'linear-gradient(to right, blue, black, white)';
             background.style.background = 'url(imagens/thunderstorm.jpg)';
             background.style.backgroundSize = "cover";
             background.style.backgroundPosition = 'left 8%';
@@ -182,9 +191,14 @@ otherinfo.addEventListener('click', function(){
             resu2.style.backgroundPosition = 'center';
             resu2.style.color = 'white';
             resu2.style.textShadow = 'black 2px 2px 1px';
+
         }
         else if (["🌫️ Névoa", "🌫️ Neblina", "🌁 Nevoeiro", "☁️ Nuvens"].includes(condicaoTraduzidaComEmoji)) {
-               background.style.background = 'url(imagens/nevoa.jpg)';
+            cidaderesu.style.background = 'linear-gradient(to right, #721da8, #721da8, white)';
+            cidaderesu2.style.background = 'linear-gradient(to right, #721da8, #721da8, white)';
+            hora.style.background = 'linear-gradient(to right, #721da8, #721da8, white)';
+            datadia.style.background = 'linear-gradient(to right, #721da8, #721da8, white)';
+            background.style.background = 'url(imagens/nevoa.jpg)';
             background.style.backgroundSize = "cover";
             background.style.backgroundPosition = 'left 8%';
             resu.style.color = 'white';
@@ -200,10 +214,14 @@ otherinfo.addEventListener('click', function(){
             resu2.style.color = 'white';
             resu2.style.textShadow = 'black 2px 2px 1px';
         }
-         else if (["🌪️ Poeira", "🏜️ Areia", "🌋 Cinzas", "🚬 Fumaça"].includes(condicaoTraduzidaComEmoji)) {
-               background.style.background = 'url(imagens/areia.jpeg)';
+         else if (["🌪️ Poeira", "🏜️ Areia", "🌋 Cinzas", "🚬 Fumaça", '🌪️ Tornado'].includes(condicaoTraduzidaComEmoji)) {
+            cidaderesu.style.background = 'linear-gradient(to right, orange, orange, white)';
+            cidaderesu2.style.background = 'linear-gradient(to right, orange, orange, white)';
+            data.style.background = 'linear-gradient(to right, orange, orange, white)';
+            datadia.style.background = 'linear-gradient(to right, orange, orange, white)';
+            background.style.background = 'url(imagens/areia.jpeg)';
             background.style.backgroundSize = "cover";
-            background.style.backgroundPosition = 'left 8%';
+            background.style.backgroundPosition = 'center 25%';
             resu1.style.background = 'url(imagens/areia.jpeg)';
             resu1.style.backgroundSize = 'cover';
             resu1.style.backgroundPosition = 'center 38%';
@@ -211,7 +229,11 @@ otherinfo.addEventListener('click', function(){
             resu2.style.backgroundSize = 'cover';
             resu2.style.backgroundPosition = 'center';
         }
-        else if (["🌬️ Rajada", "🌪️ Tornado"].includes(condicaoTraduzidaComEmoji)) {
+        else if (["🌬️ Rajada"].includes(condicaoTraduzidaComEmoji)) {
+            cidaderesu.style.background = 'linear-gradient(to right, #3f3843, white)';
+            cidaderesu2.style.background = 'linear-gradient(to right, #3f3843, white)';
+            datadia.style.background = 'linear-gradient(to right, #3f3843, white)';
+            hora.style.background = 'linear-gradient(to right, #3f3843, white)';
                background.style.background = 'url(imagens/tornado.jpg)';
             background.style.backgroundSize = "cover";
             background.style.backgroundPosition = 'left 8%';
@@ -229,6 +251,10 @@ otherinfo.addEventListener('click', function(){
             resu2.style.textShadow = 'black 2px 2px 1px';
         } 
        else if (condicaoTraduzidaComEmoji === "❄️ Neve"){
+        cidaderesu.style.background = 'linear-gradient(to right, #1596ff, white)';
+        cidaderesu2.style.background = 'linear-gradient(to right, #1596ff, white)';
+        datadia.style.background = 'linear-gradient(to right, #1596ff, white)';
+        hora.style.background = 'linear-gradient(to right, #1596ff, white)';
                background.style.background = 'url(imagens/neve.jpg)';
             background.style.backgroundSize = "cover";
             background.style.backgroundPosition = 'left 8%';

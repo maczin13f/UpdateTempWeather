@@ -81,7 +81,7 @@ async function saveSearch(cidade, estado, pais) {
     const temperatura = document.querySelector(".temperatura strong")?.textContent?.replace("°C", "") || "";
 
     const dados = {
-        user_id: USER_ID, 
+        user_id: USER_ID,
         city: cidade,
         state: estado,
         country: pais,
@@ -123,14 +123,23 @@ function interpretarAQI(aqi) {
 }
 
 function getCorTemperatura(temp) {
-    if (temp <= 0) return "aqua";
-    if (temp <= 5) return "royalblue";
-    if (temp <= 10) return "blue";
-    if (temp <= 15) return "#1a7534";
-    if (temp <= 20) return "yellow";
-    if (temp <= 25) return "orange";
-    if (temp <= 30) return "orangered";
-    
+    if (temp <= 0) {
+        return "aqua";
+    } else if (temp <= 5) {
+        return "royalblue";
+    } else if (temp <= 10) {
+        return "blue";
+    } else if (temp <= 15) {
+        return "#1a7534";
+    } else if (temp <= 20) {
+        return "yellow";
+    } else if (temp <= 25) {
+        return "orange";
+    } else if (temp <= 30) {
+        return "orangered";
+    } else {
+        return 'red';
+    }
 }
 
 function mostrarMapa(lat, lon, cidade) {
