@@ -1,7 +1,10 @@
 const paisinput = document.getElementById('pais');
 const inputbusca = document.getElementById('cidade');
 const fechar = document.getElementById('fechar');
-const divMapa = document.getElementById("mapa");
+const divMapa = document.getElementById('mapa');
+const dias = document.getElementById('dias');
+const h5 = document.querySelector('h5');
+const botaovoltar = document.getElementById('voltar');
 
 inputbusca.addEventListener('keydown', function(event){
     if (event.key === 'Enter') {
@@ -29,21 +32,9 @@ otherinfo.addEventListener('click', function(){
     nextdias.style.display = 'none';
     otherinfo.style.bottom = '4.3em';
     fechar.style.top = '-35.7em';
-    divMapa.style.display = "block";
     paisinput.style.top = '-11.45em';
     paisinput.style.left = '49em';
     }
-    else if (resu.style.display = 'none') {
-        resu.style.display = 'block';
-    resu3.style.display = 'block';
-    resu1.style.display = 'none';
-    resu2.style.display = 'none';
-    alertas.style.display = 'block';
-    nextdias.style.display = 'block';
-    divMapa.style.display = "none";
-    fechar.style.top = '-44.5em'
-    }
-
 })
 
 const botoespreview = document.getElementById('botoespreview')
@@ -135,4 +126,18 @@ verpreview5.addEventListener('click', function(){
         verpreview5.style.color = '';
     }
 })
+
+botaovoltar.addEventListener('click', function() {
+     if (resu.style.display = 'none') {
+        resu.style.display = 'block';
+    resu3.style.display = 'block';
+    resu1.style.display = 'none';
+    resu2.style.display = 'none';
+    alertas.style.display = 'block';
+    nextdias.style.display = 'block';
+    fechar.style.top = '-39.3em';
+    nextdias.style.marginLeft = '15em';
+    }
+})
+
 

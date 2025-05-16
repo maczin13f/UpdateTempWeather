@@ -58,7 +58,7 @@ async function buscarPrevisao() {
 
         document.getElementById("previsaoDias").innerHTML = `
             <h5><span class="nextdias">📆 Previsão dos próximos dias:</span></h5>
-            <div class="dias">${diasHtml}</div>
+            <div id="dias">${diasHtml}</div>
         `;
         document.getElementById("previsaoDias").style.display = "";
 

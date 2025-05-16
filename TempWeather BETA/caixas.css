@@ -141,7 +141,7 @@
     bottom: 2em;
 }
 
-.dias {
+#dias {
     position: relative;
     display: flex;
     flex-direction: row;
