@@ -137,12 +137,6 @@ function mostrarMapa(lat, lon, cidade) {
     const divMapa = document.getElementById("mapa");
     divMapa.style.display = "block";
 
-    otherinfo.addEventListener('click', function(){
-        if(divMapa.style.display === 'block') {
-            divMapa.style.display = 'none';
-        }
-    })
-
     if (mapa) {
         mapa.setView([lat, lon], 10);
         if (marcador) {

@@ -75,7 +75,9 @@ span#titulosite {
 #previsaoDias4 .dias,
 #previsaoDias5 .dias {
     margin-left: 13em;
-    width: 750px;
+    width: 790px;
+    display: flex;
+    gap: 20px;
 }
 
 #previsaoDias {
@@ -110,6 +112,10 @@ h5 {
     border: solid black 2px;
     border-radius: 30px;
     padding: 5px;
+}
+
+.h5before h5 {
+    margin-left: -6.5em;
 }
 
 #fechar {

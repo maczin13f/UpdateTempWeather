@@ -3,8 +3,8 @@ const inputbusca = document.getElementById('cidade');
 const fechar = document.getElementById('fechar');
 const divMapa = document.getElementById('mapa');
 const dias = document.getElementById('dias');
-const h5 = document.querySelector('h5');
 const botaovoltar = document.getElementById('voltar');
+const mapact = document.getElementById('mapaContainer');
 
 inputbusca.addEventListener('keydown', function(event){
     if (event.key === 'Enter') {
@@ -34,7 +34,23 @@ otherinfo.addEventListener('click', function(){
     fechar.style.top = '-35.7em';
     paisinput.style.top = '-11.45em';
     paisinput.style.left = '49em';
+    mapact.style.display = 'block';
     }
+    else if (resu.style.display === 'none') {
+        resu.style.display = 'block';
+    resu3.style.display = 'block';
+    resu1.style.display = 'none';
+    resu2.style.display = 'none';
+    alertas.style.display = 'block';
+    nextdias.style.display = 'block';
+    fechar.style.top = '-39.3em';
+    nextdias.style.marginLeft = '15em';
+    mapact.style.display = 'none';
+    divMapa.style.display = 'none'
+    document.body.classList.toggle('h5before');
+    } 
+
+   
 })
 
 const botoespreview = document.getElementById('botoespreview')
@@ -127,17 +143,6 @@ verpreview5.addEventListener('click', function(){
     }
 })
 
-botaovoltar.addEventListener('click', function() {
-     if (resu.style.display = 'none') {
-        resu.style.display = 'block';
-    resu3.style.display = 'block';
-    resu1.style.display = 'none';
-    resu2.style.display = 'none';
-    alertas.style.display = 'block';
-    nextdias.style.display = 'block';
-    fechar.style.top = '-39.3em';
-    nextdias.style.marginLeft = '15em';
-    }
-})
+
 
 
