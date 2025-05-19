@@ -74,35 +74,6 @@ async function buscarEstadoEPais(lat, lon, paisCodigo) {
     }
 }
 
-async function saveSearch(cidade, estado, pais) {
-    const agora = new Date();
-    const date = agora.toLocaleDateString("pt-BR");
-    const time = agora.toLocaleTimeString("pt-BR");
-    const temperatura = document.querySelector(".temperatura strong")?.textContent?.replace("°C", "") || "";
-
-    const dados = {
-        user_id: USER_ID,
-        city: cidade,
-        state: estado,
-        country: pais,
-        temperature: parseFloat(temperatura),
-        date,
-        time
-    };
-
-    try {
-        await fetch(`${BACKEND_URL}/save-search`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(dados)
-        });
-    } catch (error) {
-        console.error("❌ Erro ao salvar busca no servidor:", error);
-    }
-}
-
 function formatarNomeCidade(cidade) {
     if (!cidade || typeof cidade !== 'string') return "Cidade Desconhecida";
     return cidade.toLowerCase()
@@ -169,5 +140,46 @@ function mostrarMapa(lat, lon, cidade) {
     setTimeout(() => {
         mapa.invalidateSize();
     }, 200);
+}
+
+async function carregarBuscas() {
+  try {
+    const res = await fetch("http://localhost:3000/buscas");
+    const dados = await res.json();
+
+    const visitorId = localStorage.getItem("id"); // <- pegando o mesmo ID que você salva
+    console.log("Visitor ID atual:", visitorId);
+    console.log("Buscas recebidas:", dados);
+
+    const minhasBuscas = dados.filter(busca => busca.user_id === visitorId);
+    console.log("Minhas buscas filtradas:", minhasBuscas);
+
+    const tbody = document.querySelector("#buscas-table tbody");
+    tbody.innerHTML = "";
+
+    minhasBuscas.forEach(busca => {
+      const tr = document.createElement("tr");
+
+      const dataFormatada = new Date(busca.data).toLocaleDateString("pt-BR");
+      const horaFormatada = new Date(`1970-01-01T${busca.hora}`).toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+
+      tr.innerHTML = `
+        <td>${busca.cidade}</td>
+        <td>${busca.estado}</td>
+        <td>${busca.codigo_iso}</td>
+        <td>${busca.temperatura}</td>
+        <td>${dataFormatada}</td>
+        <td>${horaFormatada}</td>
+      `;
+
+      tbody.appendChild(tr);
+    });
+  } catch (error) {
+    console.error("Erro ao carregar buscas:", error);
+  }
 }
 

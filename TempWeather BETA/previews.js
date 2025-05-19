@@ -118,3 +118,4 @@ window.onload = previewSp();
 window.onload = previewDf();
 window.onload = previewSba();
 window.onload = previewFt();
+window.onload = carregarBuscas;
