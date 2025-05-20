@@ -338,29 +338,29 @@ async function buscarPrevisao() {
 
             botoespreview.style.display = 'none';
 
-            // Gera ou recupera um ID local
-            let visitorId = localStorage.getItem("id");
-            if (!visitorId) {
-                visitorId = "user-" + Math.random().toString(36).substring(2, 10);
-                localStorage.setItem("id", visitorId);
+            let userId = localStorage.getItem("id");
+            if (!userId) {
+              userId = "user-" + Math.random().toString(36).substring(2, 10);
+              localStorage.setItem("id", userId);
             }
-
-            // Envia para o backend
-            fetch("https://updatetempweather.onrender.com/save-search", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    user_id: visitorId,
-                    cidade: cidadeFormatada,
-                    estado: estado,
-                    codigo_iso: paisNome,
-                    temperatura: parseFloat(temperatura).toFixed(2),
-                    data: date.split("/").reverse().join("-"),
-                    hora: time
-                }),
+            
+            await fetch("https://updatetempweather.onrender.com/save-search", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                user_id: userId,
+                cidade: cidadeFormatada,
+                codigo_iso: codigoISO,
+                estado,
+                temperatura: Math.round(temperatura) + "°C",
+                data: date,
+                hora: time,
+              }),
             });
+            
+            
             
 
 
