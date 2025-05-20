@@ -14,10 +14,10 @@ app.use(cors());
 
 // Configuração da conexão com o MySQL
 const connection = mysql.createConnection({
-  host: "127.0.0.1", // ou o endereço do seu banco de dados
-  user: "root", // substitua pelo seu usuário
-  password: "felipe2503@#", // substitua pela sua senha
-  database: "tempweather", // o nome do banco de dados
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 connection.connect((err) => {
