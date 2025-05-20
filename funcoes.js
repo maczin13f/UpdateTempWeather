@@ -144,7 +144,7 @@ function mostrarMapa(lat, lon, cidade) {
 
 async function carregarBuscas() {
   try {
-    const res = await fetch("http://localhost:3000/buscas");
+    const res = await fetch("https://updatetempweather.onrender.com/buscas");
     const dados = await res.json();
 
     const visitorId = localStorage.getItem("id"); // <- pegando o mesmo ID que você salva
