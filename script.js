@@ -5,6 +5,7 @@ const divMapa = document.getElementById('mapa');
 const dias = document.getElementById('dias');
 const botaovoltar = document.getElementById('voltar');
 const mapact = document.getElementById('mapaContainer');
+ const containerbuscas = document.querySelector('.containerbuscas');
 
 inputbusca.addEventListener('keydown', function(event){
     if (event.key === 'Enter') {
@@ -67,6 +68,8 @@ fechar.addEventListener('click', function(){
     botoespreview.style.display = 'block';
     paisinput.style.top = '-8.86em';
     fechar.style.display = 'none';
+    carregarBuscas();
+    containerbuscas.style.display = 'block';
 })
 
 const verpreview1 = document.getElementById('preview1');

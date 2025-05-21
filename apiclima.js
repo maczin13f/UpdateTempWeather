@@ -155,6 +155,10 @@ async function buscarPrevisao() {
 
         document.getElementById('otherinfo').style.display = 'block';
 
+        const containerbuscas = document.querySelector('.containerbuscas');
+
+        containerbuscas.style.display = 'none';
+
         const background = document.getElementById('background');
         const cidaderesu = document.querySelector('#resultado .cidade');
         const cidaderesu2 = document.querySelector('#resultado2 .cidade');
