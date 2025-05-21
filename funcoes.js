@@ -220,3 +220,27 @@ async function apagarHistorico() {
     alert("Erro ao apagar histórico.");
   }
 }
+
+async function apagarHistoricoAll() {
+  const userId = localStorage.getItem("id");
+  if (!userId) return;
+
+  const confirmado = confirm("Tem certeza que deseja apagar todo o histórico?");
+  if (!confirmado) return;
+
+  try {
+    const res = await fetch(`https://updatetempweather.onrender.com/apagar-buscas/${userId}`, {
+      method: "DELETE"
+    });
+
+    if (res.ok) {
+      alert("Histórico apagado com sucesso!");
+      document.getElementById("buscas").innerHTML = ""; // limpa visualmente
+    } else {
+      alert("Erro ao apagar histórico.");
+    }
+  } catch (error) {
+    console.error("Erro ao apagar histórico:", error);
+    alert("Erro ao apagar histórico.");
+  }
+}

@@ -64,6 +64,16 @@ app.delete("/apagar-busca/:id", async (req, res) => {
   }
 });
 
+app.delete("/apagar-buscas/:user_id", async (req, res) => {
+  try {
+    const { user_id } = req.params;
+    await Busca.deleteMany({ user_id });
+    res.status(200).json({ message: "Buscas apagadas com sucesso!" });
+  } catch (err) {
+    console.error("❌ Erro ao apagar buscas:", err);
+    res.status(500).json({ error: "Erro ao apagar buscas" });
+  }
+});
 
 
 app.listen(PORT, () => {
