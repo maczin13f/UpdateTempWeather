@@ -352,10 +352,10 @@ async function buscarPrevisao() {
               body: JSON.stringify({
                 user_id: userId,
                 cidade: cidadeFormatada,
-                codigo_iso: codigoISO,
+                codigo_iso: paisNome,
                 estado,
                 temperatura: Math.round(temperatura) + "°C",
-                data: date,
+                data: datadia,
                 hora: time,
               }),
             });
