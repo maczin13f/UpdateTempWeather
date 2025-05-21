@@ -355,7 +355,7 @@ async function buscarPrevisao() {
                 codigo_iso: paisNome,
                 estado,
                 temperatura: Math.round(temperatura) + "°C",
-                data: datadia,
+                data: date,
                 hora: time,
               }),
             });

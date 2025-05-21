@@ -53,6 +53,17 @@ app.get("/buscas", async (req, res) => {
   }
 });
 
+app.delete("/apagar-busca/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Busca.findByIdAndDelete(id);
+    res.status(200).json({ message: "Busca apagada com sucesso!" });
+  } catch (err) {
+    console.error("❌ Erro ao apagar busca:", err);
+    res.status(500).json({ error: "Erro ao apagar busca" });
+  }
+});
+
 
 
 app.listen(PORT, () => {
