@@ -86,6 +86,7 @@ function formatarNomeCidade(cidade) {
     .join(" ");
 }
 
+
 function interpretarAQI(aqi) {
   const niveis = {
     1: { descricao: "Boa", cor: "#40ff00" },
@@ -98,14 +99,83 @@ function interpretarAQI(aqi) {
 }
 
 function getCorTemperatura(temp) {
-  if (temp <= 0) return "aqua";
-  if (temp <= 5) return "royalblue";
-  if (temp <= 10) return "blue";
-  if (temp <= 15) return "#1a7534";
-  if (temp <= 20) return "yellow";
-  if (temp <= 25) return "orange";
-  if (temp <= 30) return "orangered";
-  return 'red';
+  if (temp <= 0) {
+    return 'aqua'
+  } 
+  else if (temp <= 5) {
+    return 'royalblue'
+  }
+  else if (temp <= 10) {
+    return 'green'
+  }
+  else if (temp <= 15) {
+    return '#39e09d'
+  }
+  else if (temp <= 20) {
+    return 'yellow'
+  }
+  else if (temp <= 25) {
+    return 'orange'
+  }
+  else if (temp <= 30) {
+    return '#ff6f00'
+  } else {
+    return '#ff6f00'
+  }
+}
+
+
+function getCorTempMin(tempmin) {
+  if (tempmin <= 0) {
+    return 'aqua'
+  } 
+  else if (tempmin <= 5) {
+    return 'royalblue'
+  }
+  else if (tempmin <= 10) {
+    return 'green'
+  }
+  else if (tempmin <= 15) {
+    return '#39e09d'
+  }
+  else if (tempmin <= 20) {
+    return 'yellow'
+  }
+  else if (tempmin <= 25) {
+    return 'orange'
+  }
+  else if (tempmin <= 30) {
+    return '#ff6f00'
+  } else {
+    return '#ff6f00'
+  }
+}
+
+function getCorTempMax(tempmax) {
+  if (tempmax <= 0) {
+    return 'aqua'
+  } 
+  else if (tempmax <= 5) {
+    return 'royalblue'
+  }
+  else if (tempmax <= 10) {
+    return 'green'
+  }
+  else if (tempmax <= 15) {
+    return '#39e09d'
+  }
+  else if (tempmax <= 20) {
+    return 'yellow'
+  }
+  else if (tempmax <= 25) {
+    return 'orange'
+  }
+  else if (tempmax <= 30) {
+    return '#ff6f00'
+  } else {
+    return '#ff6f00'
+  }
+  
 }
 
 function mostrarMapa(lat, lon, cidade) {

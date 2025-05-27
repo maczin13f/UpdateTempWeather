@@ -98,7 +98,8 @@ async function buscarPrevisao() {
 
         const cidadeFormatada = formatarNomeCidade(cidade);
         const corTemperatura = getCorTemperatura(temperatura);
-
+        const cortempmax = getCorTempMax(tempmax);
+        const cortempmin = getCorTempMin(tempmin)
         otherinfo.addEventListener('click', function () {
             mostrarMapa(lat, lon, cidadeFormatada);
         })
@@ -108,8 +109,8 @@ async function buscarPrevisao() {
             <p class="temperatura" style="color: ${corTemperatura};"> 🌡️ <strong>${Math.round(temperatura)}°C</strong></p>
             <p class="sensacao">Sensação Térmica De: <span style="color: ${corTemperatura};">${Math.round(sensacao)}°C</span></p>
             <p class="ar">💨 Qualidade do Ar: <strong><span style="color: ${qualidadeAr.cor};">${qualidadeAr.descricao}</span></strong></p>
-            <p class="minima">Min: <span style="color: ${corTemperatura};">${Math.round(tempmin)}°C</span></p>
-            <p class="maxima">Max: <span style="color: ${corTemperatura};">${Math.round(tempmax)}°C</span></p>
+            <p class="minima">Min: <span style="color: ${cortempmin};">${Math.round(tempmin)}°C</span></p>
+            <p class="maxima">Max: <span style="color: ${cortempmax};">${Math.round(tempmax)}°C</span></p>
         `;
         document.getElementById("resultado").style.display = "block";
 
@@ -151,7 +152,7 @@ async function buscarPrevisao() {
         `;
         document.getElementById("resultado3").style.display = "block";
 
-        document.getElementById("fechar").style.display = "inline";
+        document.getElementById("fechar").style.display = "none";
 
         document.getElementById('otherinfo').style.display = 'block';
 
@@ -170,7 +171,7 @@ async function buscarPrevisao() {
             resu1.style.display = 'none';
             resu2.style.display = 'none';
             divMapa.style.display = 'none';
-            fechar.style.top = '-44.5em';
+            fechar.style.top = '-35.5em';
         }
 
 
@@ -180,6 +181,14 @@ async function buscarPrevisao() {
             datadia.style.background = 'linear-gradient(to right, blue, black, white)';
             hora.style.background = 'linear-gradient(to right, blue, black, white)';
             background.style.background = 'url(imagens/thunderstorm.jpg)';
+            otherinfo.addEventListener("mouseover", () => {
+                otherinfo.style.background = 'linear-gradient(to right, blue, black, white)';
+              });
+              
+              otherinfo.addEventListener("mouseout", () => {
+                otherinfo.style.background = '';
+              });
+              
             background.style.backgroundSize = "cover";
             background.style.backgroundPosition = 'left 8%';
             resu.style.color = 'white';
@@ -201,6 +210,14 @@ async function buscarPrevisao() {
             cidaderesu2.style.background = 'linear-gradient(to right, #721da8, #721da8, white)';
             hora.style.background = 'linear-gradient(to right, #721da8, #721da8, white)';
             datadia.style.background = 'linear-gradient(to right, #721da8, #721da8, white)';
+            otherinfo.addEventListener("mouseover", () => {
+                otherinfo.style.background = 'linear-gradient(to right, #721da8, #721da8, white)';
+              });
+              
+              otherinfo.addEventListener("mouseout", () => {
+                otherinfo.style.background = '';
+              });
+              
             background.style.background = 'url(imagens/nevoa.jpg)';
             background.style.backgroundSize = "cover";
             background.style.backgroundPosition = 'left 8%';
@@ -222,6 +239,13 @@ async function buscarPrevisao() {
             cidaderesu2.style.background = 'linear-gradient(to right, orange, orange, white)';
             data.style.background = 'linear-gradient(to right, orange, orange, white)';
             datadia.style.background = 'linear-gradient(to right, orange, orange, white)';
+            otherinfo.addEventListener("mouseover", () => {
+                otherinfo.style.background = 'linear-gradient(to right, orange, orange, white)';
+              });
+              
+              otherinfo.addEventListener("mouseout", () => {
+                otherinfo.style.background = '';
+              });
             background.style.background = 'url(imagens/areia.jpeg)';
             background.style.backgroundSize = "cover";
             background.style.backgroundPosition = 'center 25%';
@@ -237,6 +261,13 @@ async function buscarPrevisao() {
             cidaderesu2.style.background = 'linear-gradient(to right, #3f3843, white)';
             datadia.style.background = 'linear-gradient(to right, #3f3843, white)';
             hora.style.background = 'linear-gradient(to right, #3f3843, white)';
+            otherinfo.addEventListener("mouseover", () => {
+                otherinfo.style.background = 'linear-gradient(to right, #3f3843, white)';
+              });
+              
+              otherinfo.addEventListener("mouseout", () => {
+                otherinfo.style.background = '';
+              });
             background.style.background = 'url(imagens/tornado.jpg)';
             background.style.backgroundSize = "cover";
             background.style.backgroundPosition = 'left 8%';
@@ -258,6 +289,13 @@ async function buscarPrevisao() {
             cidaderesu2.style.background = 'linear-gradient(to right, #1596ff, white)';
             datadia.style.background = 'linear-gradient(to right, #1596ff, white)';
             hora.style.background = 'linear-gradient(to right, #1596ff, white)';
+            otherinfo.addEventListener("mouseover", () => {
+                otherinfo.style.background = 'linear-gradient(to right, #1596ff, white)';
+              });
+              
+              otherinfo.addEventListener("mouseout", () => {
+                otherinfo.style.background = '';
+              });
             background.style.background = 'url(imagens/neve.jpg)';
             background.style.backgroundSize = "cover";
             background.style.backgroundPosition = 'left 8%';
@@ -286,53 +324,6 @@ async function buscarPrevisao() {
         }
 
         document.getElementById("previsaoDias2").style.display = "none";
-
-        const weatherbitApiKey = "66067f24006e4768a2c7e380d45132d6"; // sua chave Weatherbit
-
-        // Buscar alertas climáticos
-        try {
-            const alertaRes = await fetch(`https://api.weatherbit.io/v2.0/alerts?lat=${lat}&lon=${lon}&key=${weatherbitApiKey}`);
-            const alertaData = await alertaRes.json();
-            console.log("Resposta da Weatherbit:", alertaData);
-
-            const alertas = alertaData.data || [];
-
-            if (alertas.length > 0) {
-                let alertasHtml = "<h3>🌩️ Alertas Climáticos:</h3>";
-
-                alertas.forEach(alerta => {
-                    let classeSeveridade = "";
-
-                    switch ((alerta.severity || "").toLowerCase()) {
-                        case "moderate":
-                            classeSeveridade = "alerta-moderado";
-                            break;
-                        case "severe":
-                            classeSeveridade = "alerta-severo";
-                            break;
-                        case "extreme":
-                            classeSeveridade = "alerta-extremo";
-                            break;
-                        default:
-                            classeSeveridade = "alerta-normal";
-                    }
-
-                    alertasHtml += `
-                        <div class="alerta ${classeSeveridade}">
-                            <h4>⚠️ ${alerta.title}</h4>
-                            <p><strong>De:</strong> ${new Date(alerta.effective_local).toLocaleString()}</p>
-                            <p><strong>Até:</strong> ${new Date(alerta.expires_local).toLocaleString()}</p>
-                            <p>${alerta.description}</p>
-                        </div>
-                    `;
-                });
-
-                document.getElementById("alertasClimaticos").innerHTML = alertasHtml;
-                document.getElementById("alertasClimaticos").style.display = "block";
-            } else {
-                document.getElementById("alertasClimaticos").innerHTML = "<p>✅ Nenhum alerta climático no momento.</p>";
-                document.getElementById("alertasClimaticos").style.display = "block";
-            }
 
             const paisinput = document.getElementById('pais');
             paisinput.style.top = '-11.45em'
@@ -363,17 +354,52 @@ async function buscarPrevisao() {
                 hora: time,
               }),
             });
-            
-            
-            
-
-
-        } catch (error) {
-            console.error("Erro ao buscar alertas climáticos:", error);
-        }
 
     } catch (error) {
         console.error("Erro ao buscar previsão:", error);
     }
+    const proxyUrl = "http://localhost:3000/inmet-alertas";
+    try {
+      const response = await fetch(proxyUrl);
+      const xmlText = await response.text();
+    
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+    
+      const alerts = xmlDoc.getElementsByTagName("alert");
+      console.log("Total de alertas INMET encontrados:", alerts.length);
+
+      let alertasHtml = "";
+    
+      for (let i = 0; i < alerts.length; i++) {
+        const alert = alerts[i];
+        const title = alert.getElementsByTagName("event")[0]?.textContent || "Sem título";
+        const effective = alert.getElementsByTagName("effective")[0]?.textContent || "Data não informada";
+        const expires = alert.getElementsByTagName("expires")[0]?.textContent || "Data não informada";
+        const description = alert.getElementsByTagName("description")[0]?.textContent || "Sem descrição";
+    
+        alertasHtml += `
+          <div class="alerta alerta-inmet">
+            <h4>⚠️ ${title}</h4>
+            <p><strong>Início:</strong> ${new Date(effective).toLocaleString("pt-BR")}</p>
+            <p><strong>Fim:</strong> ${new Date(expires).toLocaleString("pt-BR")}</p>
+            <p>${description}</p>
+          </div>
+        `;
+      }
+    
+      const alertasContainer = document.getElementById("alertasClimaticos");
+      alertasContainer.innerHTML = alertasHtml;
+      alertasContainer.style.display = "block";
+
+      if (alertasHtml === '') {
+        alertasContainer.style.display = 'none'
+      }
+    
+    } catch (err) {
+      console.error("Erro ao buscar ou processar alertas do INMET:", err);
+    }
+    
+
 }
 
