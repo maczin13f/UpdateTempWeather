@@ -81,8 +81,9 @@ app.delete("/apagar-buscas/:user_id", async (req, res) => {
 app.get('/inmet-alertas', async (req, res) => {
   try {
     const response = await fetch('https://alertas2.inmet.gov.br/ALERTAS/CAP/alertas.xml');
-
     const xml = await response.text();
+
+    console.log("🔍 XML retornado:\n", xml); // 👈 ADICIONE ISSO
 
     res.set('Content-Type', 'application/xml');
     res.send(xml);
@@ -91,6 +92,7 @@ app.get('/inmet-alertas', async (req, res) => {
     res.status(500).send('Erro ao buscar alertas');
   }
 });
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
