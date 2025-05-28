@@ -366,17 +366,17 @@ async function buscarPrevisao() {
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(xmlText, "application/xml");
     
-      const alerts = xmlDoc.getElementsByTagName("alert");
+      const alerts = xmlDoc.getElementsByTagNameNS("urn:oasis:names:tc:emergency:cap:1.2", "alert");
       console.log("Total de alertas INMET encontrados:", alerts.length);
 
       let alertasHtml = "";
     
       for (let i = 0; i < alerts.length; i++) {
         const alert = alerts[i];
-        const title = alert.getElementsByTagName("event")[0]?.textContent || "Sem título";
-        const effective = alert.getElementsByTagName("effective")[0]?.textContent || "Data não informada";
-        const expires = alert.getElementsByTagName("expires")[0]?.textContent || "Data não informada";
-        const description = alert.getElementsByTagName("description")[0]?.textContent || "Sem descrição";
+        const title = alert.getElementsByTagNameNS("urn:oasis:names:tc:emergency:cap:1.2", "event")[0]?.textContent;
+        const effective = alert.getElementsByTagNameNS(namespace, "effective")[0]?.textContent || "Data não informada";
+        const expires = alert.getElementsByTagNameNS(namespace, "expires")[0]?.textContent || "Data não informada";
+        const description = alert.getElementsByTagNameNS(namespace, "description")[0]?.textContent || "Sem descrição";
     
         alertasHtml += `
           <div class="alerta alerta-inmet">
