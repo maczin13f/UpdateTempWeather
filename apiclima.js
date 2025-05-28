@@ -358,7 +358,7 @@ async function buscarPrevisao() {
     } catch (error) {
         console.error("Erro ao buscar previsão:", error);
     }
-    const proxyUrl = "http://localhost:3000/inmet-alertas";
+    const proxyUrl = "http://localhost:10000/inmet-alertas";
     try {
       const response = await fetch(proxyUrl);
       const xmlText = await response.text();
